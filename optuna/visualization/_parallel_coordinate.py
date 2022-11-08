@@ -49,6 +49,7 @@ class _ParallelCoordinateInfo(NamedTuple):
     dims_params: List[_DimensionInfo]
     reverse_scale: bool
     target_name: str
+    color_map: str
 
 
 def plot_parallel_coordinate(
@@ -57,6 +58,7 @@ def plot_parallel_coordinate(
     *,
     target: Optional[Callable[[FrozenTrial], float]] = None,
     target_name: str = "Objective Value",
+    color_map: str = "blues",
 ) -> "go.Figure":
     """Plot the high-dimensional parameter relationships in a study.
 
@@ -107,7 +109,7 @@ def plot_parallel_coordinate(
     """
 
     _imports.check()
-    info = _get_parallel_coordinate_info(study, params, target, target_name)
+    info = _get_parallel_coordinate_info(study, params, target, target_name, color_map)
     return _get_parallel_coordinate_plot(info)
 
 
@@ -127,9 +129,12 @@ def _get_parallel_coordinate_plot(info: _ParallelCoordinateInfo) -> "go.Figure":
             dimensions=dims,
             labelangle=30,
             labelside="bottom",
+            tickfont_size=15,
+            labelfont={"size": 15},
             line={
                 "color": dims[0]["values"],
-                "colorscale": COLOR_SCALE,
+                #"colorscale": COLOR_SCALE,
+                "colorscale": info.color_map,
                 "colorbar": {"title": target_name},
                 "showscale": True,
                 "reversescale": reverse_scale,
@@ -147,6 +152,7 @@ def _get_parallel_coordinate_info(
     params: Optional[List[str]] = None,
     target: Optional[Callable[[FrozenTrial], float]] = None,
     target_name: str = "Objective Value",
+    color_map: str = "blues",
 ) -> _ParallelCoordinateInfo:
 
     _check_plot_args(study, target, target_name)
@@ -194,6 +200,7 @@ def _get_parallel_coordinate_info(
             dims_params=[],
             reverse_scale=reverse_scale,
             target_name=target_name,
+            color_map=color_map,
         )
 
     if len(objectives) == 0:
@@ -203,6 +210,7 @@ def _get_parallel_coordinate_info(
             dims_params=[],
             reverse_scale=reverse_scale,
             target_name=target_name,
+            color_map=color_map,
         )
 
     numeric_cat_params_indices: List[int] = []
@@ -298,6 +306,7 @@ def _get_parallel_coordinate_info(
         dims_params=dims,
         reverse_scale=reverse_scale,
         target_name=target_name,
+        color_map=color_map,
     )
 
 
