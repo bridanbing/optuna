@@ -23,7 +23,6 @@ from optuna.trial import create_trial
 from optuna.trial import Trial
 from optuna.version import __version__
 
-
 __all__ = [
     "Study",
     "TYPE_CHECKING",

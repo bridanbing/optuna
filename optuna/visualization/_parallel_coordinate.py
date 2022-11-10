@@ -115,7 +115,8 @@ def plot_parallel_coordinate(
 
 def _get_parallel_coordinate_plot(info: _ParallelCoordinateInfo) -> "go.Figure":
 
-    layout = go.Layout(title="Parallel Coordinate Plot")
+    #layout = go.Layout(title="Parallel Coordinate Plot")
+    layout = go.Layout(margin=go.layout.Margin(l=50, r=50, b=100, t=50, pad = 4))
 
     if len(info.dims_params) == 0 or len(info.dim_objective.values) == 0:
         return go.Figure(data=[], layout=layout)
