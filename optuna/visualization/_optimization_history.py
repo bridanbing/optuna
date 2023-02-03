@@ -118,7 +118,8 @@ def plot_optimization_history(
     study: Union[Study, Sequence[Study]],
     *,
     target: Optional[Callable[[FrozenTrial], float]] = None,
-    target_name: str = "Objective Value",
+    #target_name: str = "Objective Value",
+    target_name: str = "MAE Loss Value",
     error_bar: bool = False,
 ) -> "go.Figure":
     """Plot optimization history of all trials in a study.
