@@ -57,7 +57,8 @@ def plot_parallel_coordinate(
     params: Optional[List[str]] = None,
     *,
     target: Optional[Callable[[FrozenTrial], float]] = None,
-    target_name: str = "Objective Value",
+    #target_name: str = "Objective Value",
+    target_name: str = "MAE Loss Value",
     color_map: str = "blues",
 ) -> "go.Figure":
     """Plot the high-dimensional parameter relationships in a study.

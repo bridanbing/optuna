@@ -110,7 +110,8 @@ def plot_slice(
     params: Optional[List[str]] = None,
     *,
     target: Optional[Callable[[FrozenTrial], float]] = None,
-    target_name: str = "Objective Value",
+    #target_name: str = "Objective Value",
+    target_name: str = "MAE Loss Value",
 ) -> "go.Figure":
     """Plot the parameter relationship as slice plot in a study.
 
