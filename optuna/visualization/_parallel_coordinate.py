@@ -117,7 +117,7 @@ def plot_parallel_coordinate(
 def _get_parallel_coordinate_plot(info: _ParallelCoordinateInfo) -> "go.Figure":
 
     #layout = go.Layout(title="Parallel Coordinate Plot")
-    layout = go.Layout(margin=go.layout.Margin(l=50, r=50, b=100, t=50, pad = 4))
+    layout = go.Layout(margin=go.layout.Margin(l=50, r=50, b=100, t=50, pad = 4), font={"size": 15})
 
     if len(info.dims_params) == 0 or len(info.dim_objective.values) == 0:
         return go.Figure(data=[], layout=layout)
@@ -133,6 +133,8 @@ def _get_parallel_coordinate_plot(info: _ParallelCoordinateInfo) -> "go.Figure":
             labelside="bottom",
             tickfont_size=15,
             labelfont={"size": 15},
+            rangefont={"size":15, "color": 'white'},
+            legendgrouptitle_font={"size":15},
             line={
                 "color": dims[0]["values"],
                 #"colorscale": COLOR_SCALE,

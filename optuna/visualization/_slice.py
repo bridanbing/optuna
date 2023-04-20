@@ -163,7 +163,8 @@ def plot_slice(
 
 def _get_slice_plot(info: _SlicePlotInfo) -> "go.Figure":
 
-    layout = go.Layout(title="Slice Plot")
+    #layout = go.Layout(title="Slice Plot")
+    layout = go.Layout(font={"size": 15})
 
     if len(info.subplots) == 0:
         return go.Figure(data=[], layout=layout)

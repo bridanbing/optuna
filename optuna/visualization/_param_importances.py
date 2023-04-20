@@ -145,10 +145,11 @@ def plot_param_importances(
 def _get_importances_plot(info: _ImportancesInfo, hover_template: List[str]) -> "go.Figure":
 
     layout = go.Layout(
-        title="Hyperparameter Importances",
-        xaxis={"title": f"Importance for {info.target_name}"},
-        yaxis={"title": "Hyperparameter"},
+        #title="Hyperparameter Importances",
+        xaxis={"title": f"Importance for {info.target_name}", "titlefont_size": 15},
+        yaxis={"title": "Hyperparameter",  "titlefont_size": 15},
         showlegend=False,
+        font={"size": 15},
     )
 
     param_names = info.param_names
@@ -164,6 +165,7 @@ def _get_importances_plot(info: _ImportancesInfo, hover_template: List[str]) -> 
                 y=param_names,
                 text=info.importance_labels,
                 textposition="outside",
+                outsidetextfont={"size": 15},
                 cliponaxis=False,  # Ensure text is not clipped.
                 hovertemplate=hover_template,
                 marker_color=plotly.colors.sequential.Blues[-4],

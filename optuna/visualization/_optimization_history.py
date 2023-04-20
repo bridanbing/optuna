@@ -177,9 +177,10 @@ def _get_optimization_history_plot(
 ) -> "go.Figure":
 
     layout = go.Layout(
-        title="Optimization History Plot",
+        # title="Optimization History Plot",
         xaxis={"title": "Trial"},
         yaxis={"title": target_name},
+        font={"size": 15}
     )
 
     traces = []
